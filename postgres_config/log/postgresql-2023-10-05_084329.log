@@ -1,0 +1,74 @@
+2023-10-05 08:43:29.705 UTC [1] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 10.2.1_pre1) 10.2.1 20201203, 64-bit
+2023-10-05 08:43:29.706 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2023-10-05 08:43:29.706 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2023-10-05 08:43:29.710 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2023-10-05 08:43:29.716 UTC [14] LOG:  database system was shut down at 2023-10-05 08:41:41 UTC
+2023-10-05 08:43:29.723 UTC [1] LOG:  database system is ready to accept connections
+2023-10-05 08:44:29.160 UTC [93] ERROR:  relation "aircrafts_data" does not exist at character 15
+2023-10-05 08:44:29.160 UTC [93] STATEMENT:  SELECT * FROM aircrafts_data;
+2023-10-05 08:47:42.826 UTC [384] FATAL:  sorry, too many clients already
+2023-10-05 08:47:47.878 UTC [391] FATAL:  sorry, too many clients already
+2023-10-05 08:47:52.931 UTC [398] FATAL:  sorry, too many clients already
+2023-10-05 08:47:57.987 UTC [405] FATAL:  sorry, too many clients already
+2023-10-05 08:48:03.038 UTC [413] FATAL:  sorry, too many clients already
+2023-10-05 08:48:08.093 UTC [420] FATAL:  sorry, too many clients already
+2023-10-05 08:48:10.159 UTC [421] FATAL:  sorry, too many clients already
+2023-10-05 08:48:13.145 UTC [428] FATAL:  sorry, too many clients already
+2023-10-05 08:48:18.196 UTC [435] FATAL:  sorry, too many clients already
+2023-10-05 08:48:23.248 UTC [442] FATAL:  sorry, too many clients already
+2023-10-05 08:48:28.299 UTC [449] FATAL:  sorry, too many clients already
+2023-10-05 08:48:33.351 UTC [457] FATAL:  sorry, too many clients already
+2023-10-05 08:48:38.405 UTC [464] FATAL:  sorry, too many clients already
+2023-10-05 08:48:43.458 UTC [471] FATAL:  sorry, too many clients already
+2023-10-05 08:48:48.517 UTC [478] FATAL:  sorry, too many clients already
+2023-10-05 08:48:53.571 UTC [485] FATAL:  sorry, too many clients already
+2023-10-05 08:48:58.624 UTC [492] FATAL:  sorry, too many clients already
+2023-10-05 08:49:03.682 UTC [500] FATAL:  sorry, too many clients already
+2023-10-05 08:49:08.737 UTC [507] FATAL:  sorry, too many clients already
+2023-10-05 08:49:13.793 UTC [514] FATAL:  sorry, too many clients already
+2023-10-05 08:49:18.848 UTC [521] FATAL:  sorry, too many clients already
+2023-10-05 08:49:23.898 UTC [528] FATAL:  sorry, too many clients already
+2023-10-05 08:49:28.950 UTC [535] FATAL:  sorry, too many clients already
+2023-10-05 08:49:34.003 UTC [543] FATAL:  sorry, too many clients already
+2023-10-05 08:49:39.091 UTC [550] FATAL:  sorry, too many clients already
+2023-10-05 08:49:44.145 UTC [557] FATAL:  sorry, too many clients already
+2023-10-05 08:49:49.227 UTC [564] FATAL:  sorry, too many clients already
+2023-10-05 08:49:54.280 UTC [571] FATAL:  sorry, too many clients already
+2023-10-05 08:49:59.340 UTC [578] FATAL:  sorry, too many clients already
+2023-10-05 08:50:04.392 UTC [586] FATAL:  sorry, too many clients already
+2023-10-05 08:50:09.498 UTC [593] FATAL:  sorry, too many clients already
+2023-10-05 08:50:14.552 UTC [600] FATAL:  sorry, too many clients already
+2023-10-05 08:50:19.608 UTC [607] FATAL:  sorry, too many clients already
+2023-10-05 08:50:24.662 UTC [614] FATAL:  sorry, too many clients already
+2023-10-05 08:50:29.715 UTC [621] FATAL:  sorry, too many clients already
+2023-10-05 08:50:34.777 UTC [629] FATAL:  sorry, too many clients already
+2023-10-05 08:50:39.827 UTC [636] FATAL:  sorry, too many clients already
+2023-10-05 08:50:44.877 UTC [643] FATAL:  sorry, too many clients already
+2023-10-05 08:50:49.934 UTC [650] FATAL:  sorry, too many clients already
+2023-10-05 08:50:54.989 UTC [657] FATAL:  sorry, too many clients already
+2023-10-05 08:51:00.039 UTC [665] FATAL:  sorry, too many clients already
+2023-10-05 08:51:05.094 UTC [672] FATAL:  sorry, too many clients already
+2023-10-05 08:51:10.144 UTC [679] FATAL:  sorry, too many clients already
+2023-10-05 08:51:15.192 UTC [686] FATAL:  sorry, too many clients already
+2023-10-05 08:51:20.244 UTC [693] FATAL:  sorry, too many clients already
+2023-10-05 08:51:25.311 UTC [700] FATAL:  sorry, too many clients already
+2023-10-05 08:51:30.362 UTC [708] FATAL:  sorry, too many clients already
+2023-10-05 08:51:35.412 UTC [715] FATAL:  sorry, too many clients already
+2023-10-05 08:51:40.463 UTC [722] FATAL:  sorry, too many clients already
+2023-10-05 08:51:45.539 UTC [729] FATAL:  sorry, too many clients already
+2023-10-05 08:51:50.595 UTC [736] FATAL:  sorry, too many clients already
+2023-10-05 08:51:55.647 UTC [743] FATAL:  sorry, too many clients already
+2023-10-05 08:52:00.704 UTC [751] FATAL:  sorry, too many clients already
+2023-10-05 08:52:05.754 UTC [758] FATAL:  sorry, too many clients already
+2023-10-05 08:52:10.809 UTC [765] FATAL:  sorry, too many clients already
+2023-10-05 08:52:15.865 UTC [772] FATAL:  sorry, too many clients already
+2023-10-05 08:52:20.921 UTC [779] FATAL:  sorry, too many clients already
+2023-10-05 08:52:23.272 UTC [1] LOG:  received fast shutdown request
+2023-10-05 08:52:23.274 UTC [1] LOG:  aborting any active transactions
+2023-10-05 08:52:23.274 UTC [377] FATAL:  terminating connection due to administrator command
+2023-10-05 08:52:23.274 UTC [376] FATAL:  terminating connection due to administrator command
+2023-10-05 08:52:23.274 UTC [28] FATAL:  terminating connection due to administrator command
+2023-10-05 08:52:23.274 UTC [130] FATAL:  terminating connection due to administrator command
+2023-10-05 08:52:23.276 UTC [1] LOG:  background worker "logical replication launcher" (PID 20) exited with exit code 1
+2023-10-05 08:52:23.276 UTC [15] LOG:  shutting down
+2023-10-05 08:52:23.285 UTC [1] LOG:  database system is shut down
