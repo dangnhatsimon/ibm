@@ -1,0 +1,7 @@
+2023-10-31 03:59:04.624922 : Data extraction complete. Initiating Transformation process.
+2023-10-31 03:59:04.626252 : Data transformation complete. Initiating loading process.
+2023-10-31 03:59:04.628012 : Data saved to CSV file.
+2023-10-31 03:59:04.628283 : SQL Connection initiated.
+2023-10-31 03:59:04.638965 : Data loaded to Database as table. Running the query.
+2023-10-31 03:59:04.651092 : Process Complete.
+2023-10-31 03:59:04.651257 : Server Connection closed
