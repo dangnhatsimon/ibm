@@ -1,0 +1,92 @@
+start_mongo
+mongo -u root -p NTc0My1yc2FubmFy --authenticationDatabase admin local
+use training
+db.marks.insert({"name":"Ramesh","subject":"maths","marks":87})
+db.marks.insert({"name":"Ramesh","subject":"english","marks":59})
+db.marks.insert({"name":"Ramesh","subject":"science","marks":77})
+db.marks.insert({"name":"Rav","subject":"maths","marks":62})
+db.marks.insert({"name":"Rav","subject":"english","marks":83})
+db.marks.insert({"name":"Rav","subject":"science","marks":71})
+db.marks.insert({"name":"Alison","subject":"maths","marks":84})
+db.marks.insert({"name":"Alison","subject":"english","marks":82})
+db.marks.insert({"name":"Alison","subject":"science","marks":86})
+db.marks.insert({"name":"Steve","subject":"maths","marks":81})
+db.marks.insert({"name":"Steve","subject":"english","marks":89})
+db.marks.insert({"name":"Steve","subject":"science","marks":77})
+db.marks.insert({"name":"Jan","subject":"english","marks":0,"reason":"absent"})
+
+# Limiting the rows in the output
+use training
+db.marks.aggregate([{"$limit":2}])
+
+# Sorting based on a column
+# This command sorts the documents based on field marks in ascending order.
+db.marks.aggregate([{"$sort":{"marks":1}}])
+
+# This command sort the documents based on field marks in descending order.
+db.marks.aggregate([{"$sort":{"marks":-1}}])
+
+# Sorting and limiting. “Who are the top 2 students by average marks?”
+db.marks.aggregate([
+{
+    "$group":{
+        "_id":"$name",
+        "average":{"$avg":"$marks"}
+        }
+},
+{
+    "$sort":{"average":-1}
+},
+{
+    "$limit":2
+}
+])
+
+# total marks for each student across all subjects.
+db.marks.aggregate([
+{
+    "$group":{
+        "_id":"$name",
+        "total":{"$sum":"$marks"}
+        }
+},
+{
+    "$sort":{"average":-1}
+}
+])
+
+# the maximum marks scored in each subject.
+db.marks.aggregate([
+{
+    "$group":{
+        "_id":"$subject",
+        "max_score":{"$max":"$marks"}
+        }
+}
+])
+
+# the minimum marks scored by each student.
+db.marks.aggregate([
+{
+    "$group":{
+        "_id":"$name",
+        "min_score":{"$min":"$marks"}
+        }
+}
+])
+
+# the top two subjects based on average marks.
+db.marks.aggregate([
+{
+    "$group":{
+        "_id":"$subject",
+        "average":{"$avg":"$marks"}
+        }
+},
+{
+    "$sort":{"average":-1}
+},
+{
+    "$limit":2
+}
+])
