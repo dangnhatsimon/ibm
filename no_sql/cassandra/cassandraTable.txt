@@ -1,0 +1,30 @@
+# Connect to cassandra server
+start_cassandra
+cqlsh --username cassandra --password MTg3MzMtcnNhbm5h
+
+# Create a keyspace
+CREATE KEYSPACE training WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+# Create a table
+use training;
+CREATE TABLE movies(
+movie_id int PRIMARY KEY,
+movie_name text,
+year_of_release int
+);
+
+describe tables;
+
+# Describe a table
+describe movies
+
+# Alter a table
+ALTER TABLE movies
+ADD genre text;
+
+describe movies;
+
+# Drop a table
+drop table movies;
+describe movies;
+

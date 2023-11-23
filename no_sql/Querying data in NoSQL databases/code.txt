@@ -1,0 +1,186 @@
+# You need the ‘couchimport’ and ‘couchexport’ tools to move data in and out of the Cloudant database.
+npm install -g couchimport@1.4.0
+
+# Verify that the tool got installed
+couchimport --version
+
+# You need the ‘mongoimport’ and ‘mongoexport’ tools to move data in and out of the mongodb database.
+wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu1804-x86_64-100.3.1.tgz
+tar -xf mongodb-database-tools-ubuntu1804-x86_64-100.3.1.tgz
+export PATH=$PATH:/home/project/mongodb-database-tools-ubuntu1804-x86_64-100.3.1/bin
+echo "done"
+
+# Verify that the tools got installed
+mongoimport --version
+
+# Set the environment varible CLOUDANTURL to your actual cloudant url from your service credentials.
+export CLOUDANTURL="https://apikey-v2-8lo78x5psky2t3za1smmrs9i4wcncbiajz621m2wh27:60b1583e9fea0ff54057e3f3bee6a438@d9ee8a3c-222f-4cd7-a695-7fbfb0f1f0d5-bluemix.cloudantnosqldb.appdomain.cloud"
+
+# Export the json into your Cloudant Database
+curl -XPOST $CLOUDANTURL/movies/_bulk_docs -Hcontent-type:application/json -d @movies.json
+
+# Create an index for the “Director” key, on the ‘movies’ database using the HTTP API
+curl -X POST $CLOUDANTURL/movies/_index \
+-H"Content-Type: application/json" \
+-d'{
+    "index": {
+        "fields": ["director"]
+    }
+}'
+
+# Write a query to find all movies directed by ‘Richard Gage’ using the HTTP API
+curl -X POST $CLOUDANTURL/movies/_find \
+-H"Content-Type: application/json" \
+-d'{
+  "selector": {
+    "Director": "Richard Gage"
+  },
+  "fields": [
+    "title"
+  ]
+}'
+# Drop index 
+curl -X DELETE $CLOUDANTURL/movies/_index \
+-H"Content-Type: application/json" \
+-d'{
+    "index": {
+        "fields": ["title"]
+    }
+}'
+
+# Create an index for the “title” key, on the ‘movies’ database using the HTTP API
+curl -X POST $CLOUDANTURL/movies/_index \
+-H"Content-Type: application/json" \
+-d'{
+    "index": {
+        "fields": ["title"]
+    }
+}'
+
+# Write a query to list only the “year” and “Director” keys for the ‘Top Dog’ movies using the HTTP API
+curl -X POST $CLOUDANTURL/movies/_find \
+-H"Content-Type: application/json" \
+-d'{
+  "selector": {
+    "title": "Top Dog"
+  },
+  "fields": [
+    "year",
+    "Director"
+  ]
+}'
+
+# Export the data from the ‘movies’ database into a file named ‘movies.json’
+couchexport --url $CLOUDANTURL --db movies --type jsonl > movies.json
+
+couchexport --url $CLOUDANTURL --db movies --delimiter "," > movies.csv
+
+# Import ‘movies.json’ into mongodb server into a database named ‘entertainment’ and a collection named ‘movies’
+start_mongo
+mongoimport -u root -p NzQxNS1kYW5nbmhh --authenticationDatabase admin --db entertainment --collection movies --file movies.json
+
+# Write a mongodb query to find the year in which most number of movies were released
+mongo -u root -p NzQxNS1kYW5nbmhh --authenticationDatabase admin local
+use entertainment
+db.movies.aggregate([
+{
+    "$group":{
+        "_id":"$year",
+        "moviecount":{"$sum":1}
+        }
+},
+{
+    "$sort":{"moviecount":-1}
+},
+{
+    "$limit":1
+}
+])
+
+# Write a mongodb query to find the count of movies released after the year 1999
+db.movies.aggregate([
+{
+    "$match": {
+      "year": {
+        "$gt": 1999
+        }
+    }
+},
+{
+    "$count": "count1999"
+} 
+])
+
+
+db.movies.aggregate([
+{
+    "$match": {
+      "year": {
+        "$gt": 1999
+        }
+    }
+},
+{
+    "$group": {
+      "_id": 1,
+      "count": {
+        "$sum": 1
+        }
+    }
+} 
+])
+
+#  Write a query to find out the average votes for movies released in 2007
+db.movies.aggregate([
+{
+    "$match": {
+      "year": 2007
+    }
+},
+{
+    "$group": {
+      "_id": "$year",
+      "average_vote": {
+        "$avg": "$Votes"
+        }
+    }
+} 
+])
+# Export the fields _id, “title”, “year”, “rating” and “director” from the ‘movies’ collection into a file named partial_data.csv
+
+mongoexport -u root -p NzQxNS1kYW5nbmhh --authenticationDatabase admin --db entertainment --collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,Director
+
+mongoexport -u root -p NzQxNS1kYW5nbmhh --authenticationDatabase admin --db entertainment --collection movies --out mongodb_exported_data.json
+
+# Import ‘partial_data.csv’ into cassandra server into a keyspace named ‘entertainment’ and a table named ‘movies’
+start_cassandra
+cqlsh --username cassandra --password MzEwNzUtZGFuZ25o
+
+CREATE KEYSPACE entertainment  
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+use entertainment; 
+
+CREATE TABLE movies(
+id text PRIMARY KEY,
+title text,
+year text,
+rating text,
+director text
+);
+
+describe movies
+
+COPY entertainment.movies(id,title,year,rating,director) FROM 'partial_data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+
+# Write a cql query to count the number of rows in the ‘movies’ table
+select count(*) as num_rows from movies;
+
+# Create an index for the “rating” column in the ‘movies’ table using cql
+create index rating_index on movies(rating);
+
+#  Write a cql query to count the number of movies that are rated ‘G’
+select count(*) as num_g from movies where rating='G';
+
+COPY diamonds TO 'cassandra-diamonds.csv';
+

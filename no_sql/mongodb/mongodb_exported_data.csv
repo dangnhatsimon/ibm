@@ -1,0 +1,13 @@
+_id,clarity,cut,price
+5,SI1,Good,347
+1,SI2,Ideal,339
+8,VS2,Very Good,339
+4,SI1,Good,349
+7,SI2,Good,343
+2,SI2,Premium,351
+3,I1,Premium,342
+6,SI1,Very Good,349
+10,SI1,Very Good,346
+9,VS1,Very Good,323
+_design/b065d26fac7b5667acb5f43699e2ddebb6b9a539,,,
+_design/279597183dfe84e8f1c3946410f0997a5cdd83df,,,

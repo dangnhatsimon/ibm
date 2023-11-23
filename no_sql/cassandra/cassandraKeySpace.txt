@@ -1,0 +1,32 @@
+# Connect to cassandra server
+start_cassandra
+cqlsh --username cassandra --password MTg3MzMtcnNhbm5h
+
+# Find host details
+show host
+
+# Find the version of the server
+show version
+
+# List keyspaces
+describe keyspaces
+
+# Create a keyspace
+CREATE KEYSPACE training WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+# Describe a keyspace
+describe training
+
+# Alter a keyspace
+ALTER KEYSPACE training WITH replication = {'class': 'NetworkTopologyStrategy'};
+describe training
+
+# Use a keyspace
+use training;
+describe tables
+
+# Drop a keyspace
+drop keyspace training;
+use system;
+describe keyspaces
+
