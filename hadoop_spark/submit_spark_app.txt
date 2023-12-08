@@ -1,0 +1,26 @@
+# Install a Apache Spark cluster using Docker Compose
+git clone https://github.com/big-data-europe/docker-spark.git
+cd docker-spark
+docker-compose up
+
+# Create code
+touch submit.py
+
+# Execute code / submit Spark job
+# rm -r ~/.cache/pip/selfcheck/ removes any previously cached version of pip and allows to install the latest one.
+rm -r ~/.cache/pip/selfcheck/
+pip3 install --upgrade pip
+pip install --upgrade distro-info
+
+wget https://archive.apache.org/dist/spark/spark-3.3.3/spark-3.3.3-bin-hadoop3.tgz && tar xf spark-3.3.3-bin-hadoop3.tgz && rm -rf spark-3.3.3-bin-hadoop3.tgz
+
+# set up the JAVA_HOME which is preinstalled in the environment and SPARK_HOME
+export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+export SPARK_HOME=/home/project/spark-3.3.3-bin-hadoop3
+
+# Install the required packages to set up the spark environment.
+pip install pyspark
+python3 -m pip install findspark
+
+# Execute the Python script
+python3 submit.py

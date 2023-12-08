@@ -1,0 +1,16 @@
+# Step 1: Get a copy of the CSV file
+mkdir /home/project/data
+cd /home/project/data
+wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-BD0225EN-SkillsNetwork/data/emp.csv
+
+# Step 2: Setup Hive and Bee
+docker pull apache/hive:4.0.0-alpha-1
+docker run -d -p 10000:10000 -p 10002:10002 --env SERVICE_NAME=hiveserver2 -v /home/project/data:/hive_custom_data --name myhiveserver apache/hive:4.0.0-alpha-1
+docker exec -it myhiveserver beeline -u 'jdbc:hive2://localhost:10000/'
+
+# Step 3: Create table, add and view data
+create table Employee(emp_id string, emp_name string, salary  int)  row format delimited fields terminated by ',' ;
+show tables;
+LOAD DATA INPATH '/hive_custom_data/emp.csv' INTO TABLE Employee;
+SELECT * FROM employee;
+# To quit from the beehive prompt in the terminal, press ctrl+D
