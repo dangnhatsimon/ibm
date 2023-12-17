@@ -1,0 +1,11 @@
+# Start the crontab
+crontab -e
+
+# Write a command in the crontab editor to automate the tasks in the ETL.sh file every 24 hours.
+0 0 * * * bash /home/project/ETL.sh
+0 0 * * * psql --username=postgres --host=localhost --dbname=sales_new -c " select count(*) from sales_data;"
+# 0 0 * * * psql --username=postgres --host=localhost --dbname=sales_new -c "select * from DimDate;"
+# 0 0 * * * psql --username=postgres --host=localhost --dbname=sales_new -c "select * from FactSales;"
+
+# Start the cron service.
+sudo service cron start

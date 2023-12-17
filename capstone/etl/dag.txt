@@ -1,0 +1,14 @@
+# export aiflow home 
+export AIRFLOW_HOME=/home/project/airflow
+
+# submit dag 
+sudo cp process_web_log.py $AIRFLOW_HOME/dags
+
+# check submitted dag
+airflow dags list | grep 'process_web_log'
+
+# before run airflow, give permission in folder 
+sudo chmod -R 777 $AIRFLOW_HOME/dags
+
+# unpause dag 
+airflow dags unpause process_web_log
