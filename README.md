@@ -3,12 +3,17 @@ This is all I learned from IBM Data Engineering Course on Coursera. The course h
 - Learn to create, design, & manage relational databases & apply database administration (DBA) concepts to RDBMSs such as MySQL, PostgreSQL, & IBM Db2 
 - Develop working knowledge of NoSQL & Big Data using MongoDB, Cassandra, Cloudant, Hadoop, Apache Spark, Spark SQL, Spark ML, and Spark Streaming 
 - Implement ETL & Data Pipelines with Bash, Airflow & Kafka; architect, populate, deploy Data Warehouses; create BI reports & interactive dashboards
+
 Prepare for a career in the high-growth field of data engineering. In this program, you’ll learn in-demand skills like Python, SQL, and Databases to get job-ready in less than 5 months.
 Data engineering is building systems to gather data, process and organize raw data into usable information, and manage data. The work data engineers do provides the foundational information that data scientists and business intelligence (BI) analysts use to make recommendations and decisions.
+
 This program will teach you the foundational data engineering skills employers are seeking for entry level data engineering roles, including Python, one of the most widely used programming languages. You’ll also master SQL, RDBMS, ETL, Data Warehousing, NoSQL, Big Data, and Spark with hands-on labs and projects.
+
 You’ll learn to use Python programming language and Linux/UNIX shell scripts to extract, transform and load (ETL) data. You’ll also work with Relational Databases (RDBMS) and query data using SQL statements and use NoSQL databases as well as unstructured data. 
 When you complete the full program, you’ll have a portfolio of projects and a Professional Certificate from IBM to showcase your expertise. You’ll also earn an IBM Digital badge and will gain access to career resources to help you in your job search, including mock interviews and resume support. 
+
 This program is ACE® recommended—when you complete, you can earn up to 12 college credits.
+
 Applied Learning Project
 Throughout this Professional Certificate, you will complete hands-on labs and projects to help you gain practical experience with Python, SQL, relational databases, NoSQL databases, Apache Spark, building data pipelines, managing databases, and working with data warehouses.
 
